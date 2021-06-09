@@ -10,7 +10,7 @@
         dependencyContainer.registerFactoryAsTransient(() => this.securityContext);
     }
 
-    async AuthenticateCredentials(username, password) {
+    async authenticateCredentials(username, password) {
 
         await sleep(1000 * 2);
 
