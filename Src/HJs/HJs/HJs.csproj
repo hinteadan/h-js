@@ -23,7 +23,9 @@
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
     <None Remove="Content\Managers\refs.js" />
+    <None Remove="Content\Managers\SecurityManager.js" />
     <None Remove="Content\Models\refs.js" />
+    <None Remove="Content\Models\SecurityContext.js" />
     <None Remove="Content\Resources\refs.js" />
   </ItemGroup>
 

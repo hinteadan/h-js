@@ -1,7 +1,7 @@
 ﻿window.ref = async () => {
 
     const libs = [
-
+        "Managers/SecurityManager.js",
     ];
 
     async function referenceLibs(url) {
