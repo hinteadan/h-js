@@ -1,4 +1,6 @@
-﻿(function (window, jQuery) {
+﻿/// <reference path="core/dependency.js" />
+
+(function (window, jQuery) {
 
     function nameOf(obj) {
         return Object.keys(obj)[0];
@@ -55,9 +57,15 @@
     }
     window.measure = measure;
 
-
-
     function HJs() {
+
+        const libs = [
+            "HJs/react.production.min.js",
+            "HJs/react-dom.production.min.js",
+            "HJs/Core/DependencyContainer.js",
+        ];
+
+        let dependencyContainer;
 
         this.initialize = () => {
             mainAsync();
@@ -71,11 +79,16 @@
 
                     await referenceLibs();
 
+                    constructDependencyContainer();
+
                 });
             });
         }
 
-
+        function constructDependencyContainer() {
+            dependencyContainer = new DependencyContainer();
+            window.getDependency = type => dependencyContainer.resolve(type.prototype.typeID);
+        }
 
         async function referenceLibs(url) {
             jQuery
@@ -85,8 +98,10 @@
                     }
                 );
 
-            await referenceLib("HJs/react.production.min.js");
-            await referenceLib("HJs/react-dom.production.min.js");
+
+            for (var i in libs) {
+                await referenceLib(libs[i]);
+            }
         }
 
         async function referenceLib(url) {

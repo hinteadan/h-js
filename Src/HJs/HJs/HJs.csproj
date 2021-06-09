@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Content\HJs\Core\ExecutionExtensions.js" />
+    <None Remove="Content\HJs\Core\DependencyContainer.js" />
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
   </ItemGroup>
