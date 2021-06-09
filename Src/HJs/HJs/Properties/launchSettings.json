@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "HJs": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      },
+      "dotnetRunMessages": "true",
+      "applicationUrl": "http://localhost:55080"
+    }
+  }
+}
