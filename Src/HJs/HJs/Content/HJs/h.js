@@ -79,6 +79,10 @@
             "HJs/react-dom.production.min.js",
 
             "HJs/Core/refs.js",
+
+            "Resources/refs.js",
+            "Engines/refs.js",
+            "Managers/refs.js",
         ];
 
         let dependencyContainer;
@@ -130,6 +134,9 @@
                 await measure(x => console.log(`Wired up dependencies in ${(x / 1000)} second(s)`), async () => {
 
                     dependencyContainer.registerFactoryAsSingleton(() => new CoreDependecies());
+                    dependencyContainer.registerFactoryAsSingleton(() => new ResourcesDependecies());
+                    dependencyContainer.registerFactoryAsSingleton(() => new EnginesDependecies());
+                    dependencyContainer.registerFactoryAsSingleton(() => new ManagersDependecies());
 
                 });
             });

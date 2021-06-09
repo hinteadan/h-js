@@ -15,12 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Content\Engines\refs.js" />
     <None Remove="Content\HJs\Core\DependencyContainer.js" />
     <None Remove="Content\HJs\Core\DependencyFactory.js" />
     <None Remove="Content\HJs\Core\HttpClient.js" />
     <None Remove="Content\HJs\Core\refs.js" />
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
+    <None Remove="Content\Managers\refs.js" />
+    <None Remove="Content\Resources\refs.js" />
   </ItemGroup>
 
 </Project>
