@@ -2,6 +2,7 @@
 
     const libs = [
         "HJs/Core/DependencyContainer.js",
+        "HJs/Core/DependencyFactory.js",
     ];
 
     async function referenceLibs(url) {

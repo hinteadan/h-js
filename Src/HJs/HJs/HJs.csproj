@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <None Remove="Content\HJs\Core\DependencyContainer.js" />
+    <None Remove="Content\HJs\Core\DependencyFactory.js" />
     <None Remove="Content\HJs\Core\refs.js" />
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
