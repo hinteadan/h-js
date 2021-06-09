@@ -15,12 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Content\HJs\Core\ExecutionExtensions.js" />
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Content\HJs\Core\" />
   </ItemGroup>
 
 </Project>
