@@ -97,13 +97,15 @@
 
                     constructDependencyContainer();
 
+                    await wireupDependencies();
+
                 });
             });
         }
 
         function constructDependencyContainer() {
             dependencyContainer = new DependencyContainer();
-            window.getDependency = type => dependencyContainer.resolve(type.prototype.typeID);
+            window.get = type => dependencyContainer.resolve(type.prototype.typeID);
         }
 
         async function referenceLibs(url) {
@@ -120,6 +122,17 @@
                 if (window.ref)
                     await ref();
             }
+        }
+
+        async function wireupDependencies() {
+
+            await tryRun(async () => {
+                await measure(x => console.log(`Wired up dependencies in ${(x / 1000)} second(s)`), async () => {
+
+                    dependencyContainer.registerFactoryAsSingleton(() => new CoreDependecies());
+
+                });
+            });
         }
 
     }
