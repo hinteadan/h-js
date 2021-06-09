@@ -80,6 +80,8 @@
 
             "HJs/Core/refs.js",
 
+            "Models/refs.js",
+
             "Resources/refs.js",
             "Engines/refs.js",
             "Managers/refs.js",
