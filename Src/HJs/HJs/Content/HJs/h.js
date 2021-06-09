@@ -57,12 +57,28 @@
     }
     window.measure = measure;
 
+    async function referenceLib(url) {
+        await new Promise((yey, ney) => {
+            try {
+                jQuery.getScript(url, (response, jqXHR) => {
+                    console.info(`Loaded lib ${url}`);
+                    yey(response);
+                });
+            }
+            catch (x) {
+                ney(x);
+            }
+        });
+    }
+    window.referenceLib = referenceLib;
+
     function HJs() {
 
         const libs = [
             "HJs/react.production.min.js",
             "HJs/react-dom.production.min.js",
-            "HJs/Core/DependencyContainer.js",
+
+            "HJs/Core/refs.js",
         ];
 
         let dependencyContainer;
@@ -75,7 +91,7 @@
 
         async function mainAsync() {
             await tryRun(async () => {
-                measure(x => console.log(`H Js initialized in ${(x / 1000)} second(s)`), async () => {
+                await measure(x => console.log(`H Js initialized in ${(x / 1000)} second(s)`), async () => {
 
                     await referenceLibs();
 
@@ -101,19 +117,11 @@
 
             for (var i in libs) {
                 await referenceLib(libs[i]);
+                if (window.ref)
+                    await ref();
             }
         }
 
-        async function referenceLib(url) {
-            await new Promise((yey, ney) => {
-                try {
-                    jQuery.getScript(url, (response, jqXHR) => yey(response),);
-                }
-                catch (x) {
-                    ney(x);
-                }
-            });
-        }
     }
 
     new HJs().initialize();
