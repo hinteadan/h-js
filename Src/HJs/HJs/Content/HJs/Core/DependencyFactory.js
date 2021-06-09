@@ -24,7 +24,7 @@
             return;
 
         this.instance = this.factory();
-        if (jQuery.isFunction(this.instance.ReferDependencies)) {
+        if (jQuery.isFunction(this.instance.referDependencies)) {
             this.instance.ReferDependencies(this.dependencyContainer);
         }
     }

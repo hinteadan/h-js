@@ -19,6 +19,8 @@
     <None Remove="Content\HJs\Core\DependencyContainer.js" />
     <None Remove="Content\HJs\Core\DependencyFactory.js" />
     <None Remove="Content\HJs\Core\HttpClient.js" />
+    <None Remove="Content\HJs\Core\Model\HJsBase.js" />
+    <None Remove="Content\HJs\Core\Model\OperationResult.js" />
     <None Remove="Content\HJs\Core\refs.js" />
     <None Remove="Content\HJs\h.js" />
     <None Remove="Content\index.html" />
@@ -26,6 +28,7 @@
     <None Remove="Content\Managers\SecurityManager.js" />
     <None Remove="Content\Models\refs.js" />
     <None Remove="Content\Models\SecurityContext.js" />
+    <None Remove="Content\Models\UserInfo.js" />
     <None Remove="Content\Resources\refs.js" />
   </ItemGroup>
 

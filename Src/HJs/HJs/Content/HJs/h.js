@@ -57,6 +57,11 @@
     }
     window.measure = measure;
 
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+    window.sleep = sleep;
+
     async function referenceLib(url) {
         await new Promise((yey, ney) => {
             try {

@@ -2,6 +2,7 @@
 
     const libs = [
         "Models/SecurityContext.js",
+        "Models/UserInfo.js",
     ];
 
     async function referenceLibs(url) {

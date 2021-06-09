@@ -30,7 +30,7 @@ class ManagersDependecies {
      * @param {DependencyContainer} dependencyContainer
      */
     registerDependencies(dependencyContainer) {
-        //dependencyContainer.registerFactoryAsSingleton(() => new HttpClient());
+        dependencyContainer.registerFactoryAsSingleton(() => new SecurityManager());
     }
 
 }
