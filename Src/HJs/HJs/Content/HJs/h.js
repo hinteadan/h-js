@@ -116,10 +116,19 @@
 
                     setGlobalStyling();
 
-                    await new ReactApp().boot();
+                    await new ReactApp(createAppContainer()).boot();
 
                 });
             });
+        }
+
+        function createAppContainer() {
+            let appContainer = document.createElement('div');
+            appContainer.id = "AppContainer";
+            appContainer.style.height = "100%";
+            appContainer.style.width = "100%";
+            document.body.appendChild(appContainer);
+            return appContainer;
         }
 
         function setGlobalStyling() {

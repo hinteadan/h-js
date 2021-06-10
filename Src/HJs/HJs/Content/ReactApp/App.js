@@ -4,13 +4,23 @@
 
 class ReactApp extends HJsBase {
 
-    async boot() {
-
-        
-
+    constructor(appContainerElement) {
+        super();
+        this.appContainerElement = appContainerElement;
     }
 
-    createAppContainer() {
+    async boot() {
+
+        await measure(x => console.log(`ReactApp booted up in ${(x / 1000)} second(s)`), async () => {
+
+            ReactDOM.render(
+                React.createElement(ReactRouterDOM.HashRouter, {},
+                    React.createElement('div', null, `Alive @ ${new Date()}`)
+                ),
+                this.appContainerElement
+            );
+
+        });
 
     }
 
