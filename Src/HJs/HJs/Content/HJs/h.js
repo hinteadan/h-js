@@ -82,6 +82,7 @@
         const libs = [
             "HJs/react.production.min.js",
             "HJs/react-dom.production.min.js",
+            "HJs/react-router-dom.min.js",
 
             "HJs/Core/refs.js",
 
