@@ -83,6 +83,7 @@
             "HJs/react.production.min.js",
             "HJs/react-dom.production.min.js",
             "HJs/react-router-dom.min.js",
+            "HJs/Branding.js",
 
             "HJs/Core/refs.js",
 
@@ -91,6 +92,8 @@
             "Resources/refs.js",
             "Engines/refs.js",
             "Managers/refs.js",
+
+            "ReactApp/refs.js",
         ];
 
         let dependencyContainer;
@@ -111,8 +114,115 @@
 
                     await wireupDependencies();
 
+                    setGlobalStyling();
+
+                    await new ReactApp().boot();
+
                 });
             });
+        }
+
+        function setGlobalStyling() {
+            disableMobileResize();
+            setAppIconLinksInHeader();
+            referenceAndSetGlobalCssAndStyles();
+            referenceFonts();
+            setGlobalFontStyle();
+        }
+
+        function setGlobalFontStyle() {
+            $('body').css({
+                color: Branding.TextColor,
+                backgroundColor: Branding.BackgroundColor,
+                fontFamily: Branding.FontFamily,
+                fontSize: Branding.FontSize,
+            });
+        }
+
+        function referenceAndSetGlobalCssAndStyles() {
+            let $head = jQuery('head');
+
+            $head.append('<link href="/HJs/fabric.min.css" rel="stylesheet"/>');
+
+            $("html, body").css({
+                width: "100%",
+                height: "100%",
+                margin: 0,
+                padding: 0,
+            });
+
+            $head.append(`
+<style>
+a:link, a:visited, a:hover, a:active, a:focus {
+    color: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+a:focus, a:hover {
+    opacity: 0.8;
+}
+
+input, select, textarea, button {
+    font-family: ${Branding.FontFamily};
+    padding: ${Branding.SizingUnit / 2}px;
+    font-size: ${Branding.FontSiz};
+    border-radius: ${Branding.SizingUnit / 5}px;
+    border: solid 1px rgba(0, 0, 0, 0.45);
+    background-color: rgba(0, 0, 0, 0);
+    margin: ${Branding.SizingUnit / 2}px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.mouse-highlight:hover {
+    background-color: ${Branding.BackgroundColorHighlight}!important;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+table th, table td {
+    padding: ${Branding.SizingUnit / 2}px;
+}
+
+table thead th {
+    background-color: ${Branding.PrimaryColor};
+}
+
+table tbody tr:nth-child(even) td {
+    background-color: ${Branding.PrimaryColorFaded};
+}
+
+table tbody tr:hover td {
+    background-color: ${Branding.PrimaryColorTranslucent};
+}
+</style>
+`);
+        }
+
+        function referenceFonts() {
+            let $head = jQuery('head');
+            $head.append('<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap&subset=latin-ext" rel="stylesheet" />');
+        }
+
+        function disableMobileResize() {
+            let $head = jQuery('head');
+
+            $head.append('<meta name="viewport" content="width=device-width, user-scalable=no" />');
+        }
+
+        function setAppIconLinksInHeader() {
+            let $head = jQuery('head');
+
+            $head.append('<link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180"/>');
+            $head.append('<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16"/>');
+            $head.append('<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32"/>');
+            $head.append('<link rel="manifest" href="/site.webmanifest" />');
         }
 
         function constructDependencyContainer() {
@@ -120,7 +230,7 @@
             window.resolve = typeOrTypeID => dependencyContainer.resolve(typeOrTypeID);
         }
 
-        async function referenceLibs(url) {
+        async function referenceLibs() {
             jQuery
                 .ajaxSetup(
                     {
