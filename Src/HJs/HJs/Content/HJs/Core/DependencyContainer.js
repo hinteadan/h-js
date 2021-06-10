@@ -27,9 +27,10 @@
         this.dependenciesDictionary[instance.__proto__.typeID] = dependencyFactory;
     }
 
-    resolve(typeID) {
+    resolve(typeOrTypeID) {
         try {
-            return this.dependenciesDictionary[typeID].getInstance();
+            var id = typeOrTypeID?.prototype?.typeID || typeOrTypeID?.__proto__?.typeID || typeOrTypeID;
+            return this.dependenciesDictionary[id].getInstance();
         }
         catch (err) {
             console.error(err);

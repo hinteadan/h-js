@@ -116,7 +116,7 @@
 
         function constructDependencyContainer() {
             dependencyContainer = new DependencyContainer();
-            window.get = type => dependencyContainer.resolve(type.prototype.typeID);
+            window.resolve = typeOrTypeID => dependencyContainer.resolve(typeOrTypeID);
         }
 
         async function referenceLibs(url) {
