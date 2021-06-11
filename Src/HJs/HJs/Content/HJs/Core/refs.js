@@ -1,32 +1,11 @@
-﻿window.ref = async () => {
+﻿window.refs = [
+    "HJs/Core/DependencyContainer.js",
+    "HJs/Core/DependencyFactory.js",
+    "HJs/Core/HttpClient.js",
 
-    const libs = [
-        "HJs/Core/DependencyContainer.js",
-        "HJs/Core/DependencyFactory.js",
-        "HJs/Core/HttpClient.js",
-
-        "HJs/Core/Model/HJsBase.js",
-        "HJs/Core/Model/OperationResult.js",
-    ];
-
-    async function referenceLibs(url) {
-        for (var i in libs) {
-            await referenceLib(libs[i]);
-        }
-    }
-
-    await tryRun(async () => {
-        await measure(x => console.log(`Loaded HJs Core in ${(x / 1000)} second(s)`), async () => {
-
-            await referenceLibs(libs);
-
-
-
-        });
-    });
-
-    delete window.ref;
-};
+    "HJs/Core/Model/HJsBase.js",
+    "HJs/Core/Model/OperationResult.js",
+];
 
 class CoreDependecies {
 

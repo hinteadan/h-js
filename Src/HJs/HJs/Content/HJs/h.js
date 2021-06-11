@@ -250,8 +250,17 @@ table tbody tr:hover td {
 
             for (var i in libs) {
                 await referenceLib(libs[i]);
-                if (window.ref)
-                    await ref();
+                if (window.refs?.length) {
+                    await tryRun(async () => {
+                        await measure(x => console.log(`Loaded ${libs[i]} in ${(x / 1000)} second(s)`), async () => {
+                            for (var refIndex in window.refs) {
+                                await referenceLib(window.refs[refIndex]);
+                            }
+                        });
+                    });
+                    delete window.refs;
+                }
+
             }
         }
 
@@ -264,6 +273,7 @@ table tbody tr:hover td {
                     dependencyContainer.registerFactoryAsSingleton(() => new ResourcesDependecies());
                     dependencyContainer.registerFactoryAsSingleton(() => new EnginesDependecies());
                     dependencyContainer.registerFactoryAsSingleton(() => new ManagersDependecies());
+                    dependencyContainer.registerFactoryAsSingleton(() => new ReactAppDependecies());
 
                 });
             });
