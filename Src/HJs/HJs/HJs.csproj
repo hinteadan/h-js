@@ -31,6 +31,10 @@
     <None Remove="Content\Models\SecurityContext.js" />
     <None Remove="Content\Models\UserInfo.js" />
     <None Remove="Content\ReactApp\App.js" />
+    <None Remove="Content\ReactApp\Components\ComponentBase.js" />
+    <None Remove="Content\ReactApp\Pages\IndexPage.js" />
+    <None Remove="Content\ReactApp\Pages\NewPageSnippet.js" />
+    <None Remove="Content\ReactApp\Pages\PageBase.js" />
     <None Remove="Content\ReactApp\refs.js" />
     <None Remove="Content\Resources\refs.js" />
   </ItemGroup>

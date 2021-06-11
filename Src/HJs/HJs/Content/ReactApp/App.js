@@ -15,7 +15,7 @@ class ReactApp extends HJsBase {
 
             ReactDOM.render(
                 React.createElement(ReactRouterDOM.HashRouter, {},
-                    React.createElement('div', null, `Alive @ ${new Date()}`)
+                    React.createElement(IndexPage, { }, `Alive from Index Page @ ${new Date()}`)
                 ),
                 this.appContainerElement
             );

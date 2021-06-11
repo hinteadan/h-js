@@ -1,0 +1,5 @@
+﻿class PageBase extends ComponentBase {
+
+    
+
+}

@@ -1,4 +1,9 @@
 ﻿window.refs = [
+    "ReactApp/Components/ComponentBase.js",
+
+    "ReactApp/Pages/PageBase.js",
+    "ReactApp/Pages/IndexPage.js",
+
     "ReactApp/App.js",
 ];
 
