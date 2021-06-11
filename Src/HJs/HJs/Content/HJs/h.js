@@ -2,6 +2,27 @@
 
 (function (window, jQuery) {
 
+    const libs = [
+        "HJs/react.production.min.js",
+        //"HJs/react.development.js",
+        "HJs/react-dom.production.min.js",
+        //"HJs/react-dom.production.min.js",
+        "HJs/react-router-dom.min.js",
+        //"HJs/react-router-dom.js",
+
+        "HJs/Branding.js",
+
+        "HJs/Core/refs.js",
+
+        "Models/refs.js",
+
+        "Resources/refs.js",
+        "Engines/refs.js",
+        "Managers/refs.js",
+
+        "ReactApp/refs.js",
+    ];
+
     function nameOf(obj) {
         return Object.keys(obj)[0];
     }
@@ -81,27 +102,6 @@
     window.referenceLib = referenceLib;
 
     function HJs() {
-
-        const libs = [
-            "HJs/react.production.min.js",
-            //"HJs/react.development.js",
-            "HJs/react-dom.production.min.js",
-            //"HJs/react-dom.production.min.js",
-            "HJs/react-router-dom.min.js",
-            //"HJs/react-router-dom.js",
-
-            "HJs/Branding.js",
-
-            "HJs/Core/refs.js",
-
-            "Models/refs.js",
-
-            "Resources/refs.js",
-            "Engines/refs.js",
-            "Managers/refs.js",
-
-            "ReactApp/refs.js",
-        ];
 
         let dependencyContainer;
 
