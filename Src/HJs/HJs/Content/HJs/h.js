@@ -25,6 +25,8 @@
     window.newGuid = newGuid;
 
     async function tryRun(promiseOrAction) {
+        if (!promiseOrAction)
+            return;
         try { await Promise.resolve(promiseOrAction()); }
         catch (ex) { console.error(ex); }
     }
@@ -33,7 +35,8 @@
     async function using(onStart, onEnd, promiseOrAction) {
         try {
             await tryRun(onStart);
-            await Promise.resolve(promiseOrAction());
+            if (promiseOrAction)
+                await Promise.resolve(promiseOrAction());
         }
         catch (ex) { console.error(ex); }
         finally {
@@ -109,21 +112,34 @@
 
 
         async function mainAsync() {
-            await tryRun(async () => {
-                await measure(x => console.log(`H Js initialized in ${(x / 1000)} second(s)`), async () => {
+            await using(renderLoadingIndicator, clearLoadingIndicator, async () => {
+                await tryRun(async () => {
+                    await measure(x => console.log(`H Js initialized in ${(x / 1000)} second(s)`), async () => {
 
-                    await referenceLibs();
+                        await referenceLibs();
 
-                    constructDependencyContainer();
+                        constructDependencyContainer();
 
-                    await wireupDependencies();
+                        await wireupDependencies();
 
-                    setGlobalStyling();
+                        setGlobalStyling();
 
-                    await new ReactApp(createAppContainer()).boot();
-
+                        await new ReactApp(createAppContainer()).boot();
+                    });
                 });
             });
+        }
+
+        function renderLoadingIndicator() {
+            jQuery('body').append(`
+<div id="loading-indicator" style="margin: 10px; font-size: 14pt;">
+        <em>Loading, please wait...</em>
+</div >
+`);
+        }
+
+        function clearLoadingIndicator() {
+            jQuery('#loading-indicator').remove();
         }
 
         function createAppContainer() {
